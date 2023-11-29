@@ -1,5 +1,5 @@
-from controllers.task_controller import add_task, task_list
+from controllers.task_controller import add_task, list_tasks
 
 add_task()
-
-print(task_list[0].remaining_time)
+add_task()
+list_tasks()
