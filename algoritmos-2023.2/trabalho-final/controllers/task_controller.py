@@ -9,15 +9,25 @@ def add_task():
     task.description = input("Descrição: ")
 
     try:
-        task.deadline = datetime.strptime(input("Data de finalização(DD-MM-AAAA HH:MM): "), "%d-%m-%y %H:%M")
+        task.deadline = datetime.strptime(input("Data de finalização(DD-MM-AA HH:MM): "), "%d-%m-%y %H:%M")
+        if task.deadline < datetime.now():
+            print("\nData inválida")
+            return
         task.remaining_time = task.deadline - datetime.now()
     except ValueError:
-        print("Formato inválido. Insira a data no formato: (DD-MM-AAAA HH:MM)")
+        print("Formato inválido. Insira a data no formato: (DD-MM-AA HH:MM)")
         return
-    
+
     print()
     task_list.append(task)
 
+def get_remaining_time(task):
+    return task.remaining_time
+
 def list_tasks(filter):
-    for i in range(len(task_list)):
-        print(f"Tarefa {i}:\n  Id: {task_list[i].id}\n  Description: {task_list[i].description}\n  Data de finalização: {task_list[i].deadline}\n  Tempo restante: {task_list[i].remaining_time}\n  Situação: {task_list[i].situation}\n")
+    if len(task_list) == 0:
+        print("\nAinda não existem tarefas registradas")
+        return
+    sorted_list = sorted(task_list, key=get_remaining_time)
+    for i in range(len(sorted_list)):
+        print(f"\nTarefa {i}:\n  Id: {sorted_list[i].id}\n  Description: {sorted_list[i].description}\n  Data de finalização: {sorted_list[i].deadline}\n  Tempo restante: {sorted_list[i].remaining_time}\n  Situação: {sorted_list[i].situation}\n")
