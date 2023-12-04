@@ -1,4 +1,4 @@
-from controllers.task_controller import add_task, list_tasks
+from controllers.task_controller import add_task, list_tasks, update_task
 
 while True:
     print("\n*** Sistema de Gerenciamento de Tarefas ***")
@@ -6,9 +6,10 @@ while True:
     print("\t0 - Sair")
     print("\t1 - Adicionar tarefa")
     print("\t2 - Visualizar tarefas")
+    print("\t3 - Atualizar tarefas")
     
     opcao = int(input())
-    
+
     if opcao == 0:
         break
     elif opcao == 1:
@@ -21,3 +22,5 @@ while True:
             list_tasks("ativa")
         else:
             list_tasks("concluída")
+    elif opcao == 3:
+        update_task()

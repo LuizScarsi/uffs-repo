@@ -31,3 +31,24 @@ def list_tasks(filter):
     sorted_list = sorted(task_list, key=get_remaining_time)
     for i in range(len(sorted_list)):
         print(f"\nTarefa {i}:\n  Id: {sorted_list[i].id}\n  Description: {sorted_list[i].description}\n  Data de finalização: {sorted_list[i].deadline}\n  Tempo restante: {sorted_list[i].remaining_time}\n  Situação: {sorted_list[i].situation}\n")
+        
+def update_task():
+    id = int(input("Informe o id da tarefa a ser atualizada: "))
+    for i in range(len(task_list)):
+        if task_list[i].id == id:
+            print("\t1 - Atualizar descrição")
+            print("\t2 - Atualizar data de finalização")
+            print("\t3 - Atualizar situação")
+            option = int(input())
+            
+            if option == 1:
+                new_description = input("Insira a nova descrição: ")
+                task_list[i].description = new_description
+            elif option == 2:
+                new_deadline =  datetime.strptime(input("Data de finalização(DD-MM-AA HH:MM): "), "%d-%m-%y %H:%M")               
+                task_list[i].deadline = new_deadline
+            elif option == 3:
+                new_situation = input("Insira a nova situação: ")
+                task_list[i].situation = new_situation
+            else:
+                print("Opção inválida")
