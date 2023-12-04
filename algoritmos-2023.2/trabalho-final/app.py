@@ -17,10 +17,15 @@ while True:
     elif opcao == 2:
         print("1 - Tarefas ativas: ")
         print("2 - Tarefas concluídas: ")
+        print("3 - Todas as tarefas: ")
         filtro = int(input())
         if filtro == 1:
             list_tasks("ativa")
-        else:
+        elif filtro == 2:
             list_tasks("concluída")
+        elif filtro == 3:
+            list_tasks(None)
+        else:
+            print("Opção inválida")
     elif opcao == 3:
         update_task()

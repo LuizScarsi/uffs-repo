@@ -29,9 +29,13 @@ def list_tasks(situation):
         print("\nAinda não existem tarefas registradas")
         return
     sorted_list = sorted(task_list, key=get_remaining_time)
-    filtered_list = list(filter(lambda task: task.situation == situation, sorted_list))
-    for i in range(len(filtered_list)):
-        print(f"\nTarefa {i}:\n  Id: {filtered_list[i].id}\n  Description: {filtered_list[i].description}\n  Data de finalização: {filtered_list[i].deadline}\n  Tempo restante: {filtered_list[i].remaining_time}\n  Situação: {filtered_list[i].situation}\n")
+    if situation:
+        filtered_list = list(filter(lambda task: task.situation == situation, sorted_list))
+        for i in range(len(filtered_list)):
+            print(f"\nTarefa {i}:\n  Id: {filtered_list[i].id}\n  Description: {filtered_list[i].description}\n  Data de finalização: {filtered_list[i].deadline}\n  Tempo restante: {filtered_list[i].remaining_time}\n  Situação: {filtered_list[i].situation}\n")
+    else:
+        for i in range(len(sorted_list)):
+            print(f"\nTarefa {i}:\n  Id: {sorted_list[i].id}\n  Description: {sorted_list[i].description}\n  Data de finalização: {sorted_list[i].deadline}\n  Tempo restante: {sorted_list[i].remaining_time}\n  Situação: {sorted_list[i].situation}\n")
         
 def update_task():
     id = int(input("Informe o id da tarefa a ser atualizada: "))
