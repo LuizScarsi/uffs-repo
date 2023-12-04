@@ -6,7 +6,7 @@ while True:
     print("\t0 - Sair")
     print("\t1 - Adicionar tarefa")
     print("\t2 - Visualizar tarefas")
-    print("\t3 - Atualizar tarefas")
+    print("\t3 - Editar tarefas")
     
     opcao = int(input())
 

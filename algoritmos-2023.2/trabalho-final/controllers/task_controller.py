@@ -38,7 +38,8 @@ def update_task():
         if task_list[i].id == id:
             print("\t1 - Atualizar descrição")
             print("\t2 - Atualizar data de finalização")
-            print("\t3 - Atualizar situação")
+            print("\t3 - Concluir tarefa")
+            print("\t4 - Deletar tarefa")
             option = int(input())
             
             if option == 1:
@@ -48,7 +49,11 @@ def update_task():
                 new_deadline =  datetime.strptime(input("Data de finalização(DD-MM-AA HH:MM): "), "%d-%m-%y %H:%M")               
                 task_list[i].deadline = new_deadline
             elif option == 3:
-                new_situation = input("Insira a nova situação: ")
-                task_list[i].situation = new_situation
+                if task_list[i].situation == "concluída":
+                    print("Essa tarefa já foi concluída")
+                    return
+                task_list[i].situation = "concluída"
+            elif option == 4:
+                task_list.remove(task_list[i])
             else:
                 print("Opção inválida")
