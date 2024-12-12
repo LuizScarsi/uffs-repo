@@ -1,11 +1,11 @@
-package prog1.herancaExercicios;
+package prog1.herancaExercicios.ex61;
 
 public class DispositivoEletronico {
     private String marca;
     private String modelo;
     private int armazenamento;
 
-    protected DispositivoEletronico(String marca, String modelo, int armazenamento) {
+    DispositivoEletronico(String marca, String modelo, int armazenamento) {
         this.marca = marca;
         this.modelo = modelo;
         this.armazenamento = armazenamento;
